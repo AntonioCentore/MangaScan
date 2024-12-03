@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recensioni</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .review {
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+        }
+        .review img {
+            max-width: 100%;
+            border-radius: 10px;
+        }
+        .review h3 {
+            margin: 10px 0;
+            color: #333;
+        }
+        .review p {
+            margin: 10px 0;
+            color: #555;
+        }
+        .stars {
+            color: gold;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+  <!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews</title>
+</head>
+<body>
+    <h1>Recensioni</h1>
+    <div id="reviews-container"></div>
+
+    <script>
+      function loadReviews() {
+    const reviews = JSON.parse(localStorage.getItem("reviews")) || [];
+    console.log("Recensioni caricate:", reviews);
+    
+    const container = document.getElementById("reviews-container");
+    container.innerHTML = "";
+
+    if (reviews.length === 0) {
+        container.innerHTML = "<p>Non ci sono recensioni disponibili.</p>";
+        return;
+    }
+
+    reviews.forEach((review, index) => {
+        const reviewDiv = document.createElement("div");
+        reviewDiv.style.border = "1px solid #ccc";
+        reviewDiv.style.padding = "10px";
+        reviewDiv.style.marginBottom = "10px";
+
+        reviewDiv.innerHTML = `
+            <img src="${review.image}" alt="Immagine Recensione" style="width: 100px; height: auto;">
+            <p><strong>Recensione:</strong> ${review.text}</p>
+            <p><strong>Valutazione:</strong> ${"★".repeat(review.rating)}</p>
+        `;
+
+        container.appendChild(reviewDiv);
+    });
+}
+
+loadReviews();
+
+    </script>
+</body>
+</html>
+
+
+    </script>
+</body>
+</html>

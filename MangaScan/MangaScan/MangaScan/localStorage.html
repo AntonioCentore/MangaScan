@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestione LocalStorage</title>
+</head>
+<body>
+    <h1>Test LocalStorage</h1>
+    <button id="save">Salva Dati</button>
+    <button id="load">Carica Dati</button>
+    <button id="clear">Cancella Dati</button>
+
+    <div id="output"></div>
+
+    <script>
+        // Event listener per salvare dati
+        document.getElementById("save").addEventListener("click", function() {
+            localStorage.setItem("chiave", "Valore di esempio");
+            alert("Dato salvato in localStorage!");
+        });
+
+        // Event listener per leggere dati
+        document.getElementById("load").addEventListener("click", function() {
+            const valore = localStorage.getItem("chiave");
+            document.getElementById("output").innerText = valore
+                ? `Dati trovati: ${valore}`
+                : "Nessun dato trovato!";
+        });
+
+        // Event listener per cancellare dati
+        document.getElementById("clear").addEventListener("click", function() {
+            localStorage.removeItem("chiave");
+            alert("Dato cancellato!");
+        });
+    </script>
+</body>
+</html>

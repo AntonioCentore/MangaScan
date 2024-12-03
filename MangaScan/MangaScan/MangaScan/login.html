@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #173157;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 100%;
+        }
+        .login-container h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+        .login-container input {
+            width: 100%;
+            padding: 6px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .login-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #173157;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .login-container button:hover {
+            background-color: #555;
+        }
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Accedi</h1>
+        <form id="login-form">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+			<li class="nav-item active"><a href="index.html"> </li>
+        </form>
+        <p class="error" id="error-message"></p>
+    </div>
+
+    <script>
+
+    document.getElementById("login-form").addEventListener("submit", function(e) {
+        e.preventDefault(); // Previene il comportamento predefinito del form
+
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+        const errorMessage = document.getElementById("error-message");
+
+        errorMessage.textContent = "";
+
+        // Recupera gli utenti registrati
+        const users = JSON.parse(localStorage.getItem("users")) || [];
+
+        // Verifica le credenziali
+        const user = users.find(user => user.username === username && user.password === password);
+        if (user) {
+            // Login riuscito
+            localStorage.setItem("isLoggedIn", true);
+            window.location.href = "index.html";
+        } else {
+            errorMessage.textContent = "Username o password errati!";
+        }
+    });
+</script>
+
+    </script>
+</body>
+</html>
